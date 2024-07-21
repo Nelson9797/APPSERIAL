@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor de Temperatura y Gas</title>
+    <script>
+        function fetchData() {
+            fetch('/data')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('temp').innerText = `Temp: ${data.temp} C`;
+                    document.getElementById('gas').innerText = `Gas: ${data.gas}`;
+                });
+        }
+
+        setInterval(fetchData, 1000); // Actualizar cada segundo
+    </script>
+</head>
+<body>
+    <h1>Monitor de Temperatura y Gas</h1>
+    <p id="temp">Temp: -- C</p>
+    <p id="gas">Gas: --</p>
+</body>
+</html>
